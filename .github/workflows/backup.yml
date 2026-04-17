@@ -5,6 +5,10 @@ on:
     - cron: "0 3 * * 0" # Каждое воскресенье в 03:00 UTC
   workflow_dispatch: # Возможность запустить вручную из вкладки Actions
 
+permissions:
+  contents: write
+  actions: read
+
 jobs:
   backup:
     runs-on: ubuntu-latest
