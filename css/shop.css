@@ -1,34 +1,13 @@
 /* ===================================
-   YUMI STORE - CUSTOM STYLES
+   PRODUCT CARDS (Main Page)
    =================================== */
-
-/* --- Каталог (Главная) --- */
-.section-products {
-  padding: 9.6rem 0;
-  margin-bottom: 4.8rem;
-  background-color: #fafafa;
-}
-.section-products .section-title {
-  text-align: center;
-  font-size: 4.4rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 1.6rem;
-  letter-spacing: -0.5px;
-}
-.section-products .section-desc {
-  text-align: center;
-  font-size: 1.8rem;
-  color: #6f6f6f;
-  margin-bottom: 6.4rem;
-  line-height: 1.6;
-}
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 4.8rem;
   margin-top: 4.8rem;
 }
+
 .product-card {
   background: white;
   border-radius: 11px;
@@ -38,25 +17,33 @@
     transform 0.4s,
     box-shadow 0.4s;
 }
+
 .product-card:hover {
   transform: translateY(-1.2rem);
   box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
 }
+
 .product-image {
   width: 100%;
   height: 24rem;
   object-fit: cover;
   display: block;
 }
+
 .product-content {
   padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 28rem;
 }
+
 .product-title {
   font-size: 2.4rem;
   color: #333;
   font-weight: 600;
   margin-bottom: 1.6rem;
 }
+
 .product-category {
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -64,18 +51,22 @@
   letter-spacing: 0.75px;
   margin-bottom: 1.2rem;
 }
+
 .product-price {
   font-size: 2rem;
   font-weight: 600;
   color: #e67e22;
   margin-bottom: 2rem;
 }
+
 .product-desc {
   font-size: 1.6rem;
   line-height: 1.6;
   color: #6f6f6f;
   margin-bottom: 3.2rem;
+  flex-grow: 1;
 }
+
 .btn-add-to-cart {
   width: 100%;
   padding: 1.6rem 3.2rem;
@@ -87,88 +78,115 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
+  margin-top: auto;
 }
+
 .btn-add-to-cart:hover {
   background-color: #cf711f;
   transform: translateY(-2px);
 }
 
-/* --- Корзина --- */
+/* ===================================
+   CART PAGE
+   =================================== */
 .cart-page {
   padding: 9.6rem 0;
   min-height: 60vh;
 }
-.cart-layout {
-  align-items: flex-start;
+
+#cart-items {
+  display: none;
 }
-.cart-items {
-  background: white;
-  border-radius: 11px;
-  padding: 3.2rem;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+#cart-items.has-items {
+  display: block;
 }
+
 .cart-item {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 11px;
+  padding: 3.2rem !important;
+  margin-bottom: 1.6rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.4rem 0;
-  border-bottom: 1px solid #eee;
   gap: 2.4rem;
 }
-.cart-item:last-child {
-  border-bottom: none;
+
+.cart-item-info {
+  flex: 1;
+  padding-right: 2rem;
 }
+
 .cart-item-info h4 {
   font-size: 2rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 0.8rem;
+  margin-top: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
 }
+
 .cart-item-price {
   font-size: 1.6rem;
-  color: #888;
+  color: #6f6f6f;
+  margin: 0;
 }
+
 .cart-item-controls {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1.2rem;
+  flex-shrink: 0;
 }
+
 .btn-qty {
   width: 3.6rem;
   height: 3.6rem;
   border: 1px solid #ddd;
-  background: white;
   border-radius: 50%;
+  background-color: #fff;
   font-size: 1.8rem;
   cursor: pointer;
   transition: all 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
 }
+
 .btn-qty:hover {
   background-color: #fdf2e9;
   border-color: #e67e22;
 }
+
 .cart-item-qty {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #333;
   min-width: 3rem;
   text-align: center;
 }
+
 .btn-remove {
   background: none;
   border: none;
-  color: #888;
-  font-size: 2.4rem;
+  font-size: 2rem;
+  color: #999;
   cursor: pointer;
   transition: all 0.3s;
   padding: 0.8rem;
 }
+
 .btn-remove:hover {
   color: #e67e22;
+  transform: scale(1.1);
 }
+
 .cart-empty {
   text-align: center;
   padding: 6.4rem 3.2rem;
@@ -176,48 +194,51 @@
   border-radius: 11px;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
 }
+
 .cart-empty p {
   font-size: 2rem;
   color: #6f6f6f;
   margin-bottom: 3.2rem;
 }
+
 .cart-summary {
   background: white;
   border-radius: 11px;
   padding: 3.2rem;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
-  position: sticky;
-  top: 12rem;
 }
+
 .cart-total-price {
   font-size: 3.6rem;
   font-weight: 700;
   color: #e67e22;
   margin: 1.6rem 0 2.4rem;
 }
-.btn--large {
-  padding: 1.8rem 3.2rem;
-  font-size: 2.2rem;
-}
 
-/* --- Оформление заказа --- */
+/* ===================================
+   CHECKOUT PAGE
+   =================================== */
 .checkout-page {
   padding: 9.6rem 0;
   min-height: 60vh;
 }
+
 .checkout-container {
   max-width: 70rem;
   margin: 0 auto;
 }
+
 .checkout-form {
   background: white;
   border-radius: 11px;
   padding: 4.8rem;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
 }
+
 .form-group {
   margin-bottom: 2.4rem;
 }
+
 .form-group label {
   display: block;
   font-size: 1.6rem;
@@ -225,6 +246,7 @@
   color: #333;
   margin-bottom: 0.8rem;
 }
+
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -236,49 +258,56 @@
   background-color: #fdf2e9;
   transition: all 0.3s;
 }
+
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: #e67e22;
   box-shadow: 0 0 0 0.3rem rgba(230, 125, 34, 0.1);
 }
+
 .order-summary {
   background: #fdf2e9;
   border-radius: 11px;
   padding: 2.4rem;
   margin-bottom: 3.2rem;
 }
+
 .order-summary h4 {
   font-size: 2rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 1.6rem;
 }
+
 .checkout-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.8rem 0;
-  font-size: 1.6rem;
-  color: #555;
-}
-.checkout-total {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 11px;
+  padding: 2.4rem 3.2rem !important;
+  margin-bottom: 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1.6rem;
-  margin-top: 1.6rem;
-  border-top: 2px solid #e67e22;
 }
+
+.checkout-total,
 .checkout-total strong {
   font-size: 2.4rem;
+  font-weight: 700;
   color: #e67e22;
+  margin-top: 2.4rem;
+  padding-top: 2.4rem;
+  border-top: 2px solid #fdf2e9;
 }
+
 .btn-submit {
   width: 100%;
   padding: 1.8rem;
   font-size: 2.2rem;
   margin-top: 1.6rem;
 }
+
 .checkout-success {
   text-align: center;
   padding: 6.4rem 3.2rem;
@@ -286,43 +315,75 @@
   border-radius: 11px;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
 }
+
 .checkout-success p {
   font-size: 1.8rem;
   color: #6f6f6f;
   margin: 2.4rem 0 3.2rem;
 }
 
-/* --- Адаптивность --- */
+/* ===================================
+   RESPONSIVE (Shop Pages)
+   =================================== */
 @media (max-width: 768px) {
-  .section-products,
-  .cart-page,
-  .checkout-page {
-    padding: 4.8rem 0;
+  .header {
+    padding: 0 2.4rem;
   }
-  .products-grid {
-    grid-template-columns: 1fr;
-    gap: 3.2rem;
+
+  .header a {
+    font-size: 2.8rem;
+    margin-right: 2rem;
   }
-  .product-content {
-    padding: 2.4rem 3.2rem 3.2rem 3.2rem;
-  }
-  .cart-layout {
-    grid-template-columns: 1fr;
-  }
+
   .cart-item {
+    padding: 2.4rem !important;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.6rem;
   }
+
+  .cart-item-info {
+    width: 100%;
+    margin-bottom: 1.6rem;
+  }
+
   .cart-item-controls {
     width: 100%;
     justify-content: space-between;
   }
+
   .checkout-form {
     padding: 3.2rem 2.4rem;
   }
-  .cart-items,
+
   .cart-summary {
     padding: 2.4rem;
   }
+}
+/* === ИДЕАЛЬНОЕ ВЫРАВНИВАНИЕ КНОПОК В КАРТОЧКАХ === */
+
+/* 1. Заставляем саму карточку быть флекс-колонкой и заполнять ячейку сетки */
+.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* 2. Контент растягивается на всю высоту карточки */
+.product-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 3.2rem 4.8rem 4.8rem 4.8rem !important; /* Паддинг остаётся */
+}
+
+/* 3. Описание забирает всё свободное место, толкая кнопку вниз */
+.product-desc {
+  flex-grow: 1 !important;
+  margin-bottom: 2rem !important; /* Отступ от текста до кнопки */
+}
+
+/* 4. Кнопка всегда в самом низу */
+.btn-add-to-cart {
+  margin-top: auto !important;
+  width: 100%;
 }

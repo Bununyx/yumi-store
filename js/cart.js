@@ -1,82 +1,67 @@
-// === КОРЗИНА: ДОБАВЛЕНИЕ / УДАЛЕНИЕ / ПОДСЧЁТ ===
+const CART_KEY = "yumi_cart";
 
-// Добавить товар в корзину
+// Глобальная функция для onclick из HTML
+window.handleAddToCart = function (productId, title, price) {
+  addToCart(productId, title, price);
+};
+
 export function addToCart(productId, title, price) {
-  let cart = JSON.parse(localStorage.getItem("yumi_cart") || "[]");
+  let cart = getCart();
+  const existing = cart.find((item) => item.id === productId);
 
-  const existingItem = cart.find((item) => item.id === productId);
-
-  if (existingItem) {
-    existingItem.quantity += 1;
+  if (existing) {
+    existing.quantity += 1;
   } else {
-    cart.push({
-      id: productId,
-      title: title,
-      price: price,
-      quantity: 1,
-    });
+    cart.push({ id: productId, title, price: Number(price), quantity: 1 });
   }
 
-  localStorage.setItem("yumi_cart", JSON.stringify(cart));
-  updateCartCount();
-
-  // Показываем уведомление (можно убрать)
-  alert("✅ Товар добавлен в корзину!");
-}
-
-// Удалить товар из корзины
-export function removeFromCart(productId) {
-  let cart = JSON.parse(localStorage.getItem("yumi_cart") || "[]");
-  cart = cart.filter((item) => item.id !== productId);
-  localStorage.setItem("yumi_cart", JSON.stringify(cart));
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
   updateCartCount();
 }
 
-// Изменить количество товара
-export function updateQuantity(productId, newQuantity) {
-  let cart = JSON.parse(localStorage.getItem("yumi_cart") || "[]");
-  const item = cart.find((item) => item.id === productId);
-
-  if (item) {
-    if (newQuantity <= 0) {
-      removeFromCart(productId);
-    } else {
-      item.quantity = newQuantity;
-      localStorage.setItem("yumi_cart", JSON.stringify(cart));
-      updateCartCount();
-    }
+export function getCart() {
+  try {
+    const raw = localStorage.getItem(CART_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
   }
 }
 
-// Обновить счётчик корзины в шапке сайта
 export function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem("yumi_cart") || "[]");
+  const cart = getCart();
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const el = document.getElementById("cart-count");
+  if (el) el.textContent = count;
+}
 
-  const cartCountEl = document.getElementById("cart-count");
-  if (cartCountEl) {
-    cartCountEl.textContent = count;
+export function getCartTotal() {
+  return getCart().reduce((sum, item) => sum + item.price * item.quantity, 0);
+}
+
+export function clearCart() {
+  localStorage.removeItem(CART_KEY);
+  updateCartCount();
+}
+
+export function removeFromCart(productId) {
+  const cart = getCart().filter((item) => item.id !== productId);
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  updateCartCount();
+}
+
+export function updateQuantity(productId, newQty) {
+  const cart = getCart();
+  const item = cart.find((i) => i.id === productId);
+  if (!item) return;
+
+  if (newQty <= 0) {
+    removeFromCart(productId);
+  } else {
+    item.quantity = newQty;
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    updateCartCount();
   }
 }
 
-// Получить общую сумму корзины
-export function getCartTotal() {
-  const cart = JSON.parse(localStorage.getItem("yumi_cart") || "[]");
-  return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-}
-
-// Получить весь контент корзины
-export function getCartItems() {
-  return JSON.parse(localStorage.getItem("yumi_cart") || "[]");
-}
-
-// Очистить корзину (после успешного заказа)
-export function clearCart() {
-  localStorage.removeItem("yumi_cart");
-  updateCartCount();
-}
-
-// Инициализация при загрузке любой страницы
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartCount();
-});
+document.addEventListener("DOMContentLoaded", updateCartCount);

@@ -31,8 +31,8 @@ btnNavEl.addEventListener("click", function () {
   headerEl.classList.toggle("nav-open");
 });
 
-// Smooth scrolling
-const allLinks = document.querySelectorAll("a:link");
+// Берём только якорные ссылки (начинающиеся с #)
+const allLinks = document.querySelectorAll("a[href^='#']");
 
 allLinks.forEach(function (link) {
   link.addEventListener("click", function (e) {

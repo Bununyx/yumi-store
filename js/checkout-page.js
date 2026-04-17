@@ -1,64 +1,74 @@
-// js/checkout-page.js
 import { supabase } from "./supabase.js";
-import { getCartItems, getCartTotal, clearCart } from "./cart.js";
+import { getCart, getCartTotal, clearCart } from "./cart.js";
 
 function renderCheckoutItems() {
-  const cartItems = getCartItems();
+  const items = getCart();
   const container = document.getElementById("checkout-items");
   const totalEl = document.getElementById("checkout-total");
-
   if (!container) return;
 
-  container.innerHTML = cartItems
+  container.innerHTML = items
     .map(
       (item) => `
-        <div class="checkout-item">
-            <span>${item.title} × ${item.quantity}</span>
-            <span>${item.price * item.quantity} ₽</span>
-        </div>
-    `,
+    <div class="checkout-item">
+      <span>${item.title} × ${item.quantity}</span>
+      <span>${item.price * item.quantity} ₽</span>
+    </div>
+  `,
     )
     .join("");
 
-  totalEl.textContent = getCartTotal() + " ₽";
+  if (totalEl) totalEl.textContent = `${getCartTotal()} ₽`;
 }
 
-document
-  .getElementById("checkout-form")
-  ?.addEventListener("submit", async (e) => {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const items = getCart();
+  if (items.length === 0) {
+    window.location.href = "cart.html";
+    return;
+  }
+  renderCheckoutItems();
 
-    const submitBtn = document.querySelector(".btn-submit");
+  const form = document.getElementById("checkout-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector(".btn-submit");
+    if (!submitBtn) return;
+
     submitBtn.disabled = true;
     submitBtn.textContent = "Отправка...";
 
-    const clientName = document.getElementById("client-name").value;
-    const clientPhone = document.getElementById("client-phone").value;
-    const cartItems = getCartItems();
-    const totalAmount = getCartTotal();
+    const name = document.getElementById("client-name")?.value.trim();
+    const phone = document.getElementById("client-phone")?.value.trim();
+
+    if (!name || !phone) {
+      alert("Пожалуйста, заполните имя и телефон.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Подтвердить заказ";
+      return;
+    }
 
     try {
-      // 1. Создаём заказ — ВАЖНО: data: order
       const { data: order, error: orderError } = await supabase
         .from("orders")
         .insert([
           {
-            client_name: clientName,
-            client_phone: clientPhone,
-            total_amount: totalAmount,
+            client_name: name,
+            client_phone: phone,
+            total_amount: getCartTotal(),
             status: "new",
           },
         ])
         .select()
         .single();
 
-      if (orderError || !order) {
-        throw new Error(orderError?.message || "Не удалось создать заказ");
-      }
+      if (orderError || !order)
+        throw new Error(orderError?.message || "Ошибка создания заказа");
 
-      // 2. Создаём позиции заказа
-      const orderItems = cartItems.map((item) => ({
-        order_id: order.id, // Теперь order.id точно существует
+      const orderItems = items.map((item) => ({
+        order_id: order.id,
         product_id: item.id,
         quantity: item.quantity,
         price_at_purchase: item.price,
@@ -67,25 +77,17 @@ document
       const { error: itemsError } = await supabase
         .from("order_items")
         .insert(orderItems);
-
       if (itemsError) throw itemsError;
 
-      // 3. Успех!
       clearCart();
       document.getElementById("checkout-form").style.display = "none";
-      document.getElementById("checkout-success").style.display = "block";
+      const successMsg = document.getElementById("checkout-success");
+      if (successMsg) successMsg.style.display = "block";
     } catch (error) {
-      console.error("❌ Ошибка оформления:", error);
-      alert("Ошибка: " + error.message);
+      console.error("Ошибка оформления:", error);
+      alert("Произошла ошибка при оформлении. Попробуйте позже.");
       submitBtn.disabled = false;
       submitBtn.textContent = "Подтвердить заказ";
     }
   });
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (getCartItems().length === 0) {
-    window.location.href = "cart.html";
-    return;
-  }
-  renderCheckoutItems();
 });

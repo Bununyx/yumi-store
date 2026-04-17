@@ -10,15 +10,29 @@
   </head>
   <body>
     <header class="header">
-      <div class="container header-container">
-        <a href="index.html">YUMI</a>
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <a href="index.html" class="footer-logo" style="margin-bottom: 0"
+          >YUMI</a
+        >
+
         <nav class="main-nav">
           <ul class="main-nav-list">
             <li><a class="main-nav-link" href="index.html">Каталог</a></li>
             <li>
-              <a class="main-nav-link" href="cart.html"
-                >🛒 <span id="cart-count">0</span></a
+              <a
+                class="main-nav-link"
+                href="cart.html"
+                style="display: flex; align-items: center; gap: 0.5rem"
               >
+                🛒 <span id="cart-count">0</span>
+              </a>
             </li>
           </ul>
         </nav>

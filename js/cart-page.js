@@ -1,6 +1,5 @@
-// js/cart-page.js
 import {
-  getCartItems,
+  getCart,
   getCartTotal,
   removeFromCart,
   updateQuantity,
@@ -8,64 +7,72 @@ import {
 } from "./cart.js";
 
 function renderCart() {
-  const cartItems = getCartItems();
-  const cartItemsEl = document.getElementById("cart-items");
-  const cartEmptyEl = document.getElementById("cart-empty");
-  const cartSummaryEl = document.getElementById("cart-summary");
-  const totalAmountEl = document.getElementById("cart-total-amount");
+  const items = getCart();
+  const container = document.getElementById("cart-items");
+  const emptyMsg = document.getElementById("cart-empty");
+  const summary = document.getElementById("cart-summary");
+  const totalEl = document.getElementById("cart-total-amount");
 
-  if (!cartItemsEl) return;
+  if (!container) return;
 
-  if (cartItems.length === 0) {
-    cartItemsEl.style.display = "none";
-    cartSummaryEl.style.display = "none";
-    cartEmptyEl.style.display = "block";
+  if (items.length === 0) {
+    container.style.display = "none";
+    if (summary) summary.style.display = "none";
+    if (emptyMsg) emptyMsg.style.display = "block";
     return;
   }
 
-  cartEmptyEl.style.display = "none";
-  cartSummaryEl.style.display = "block";
-  cartItemsEl.style.display = "block";
+  if (emptyMsg) emptyMsg.style.display = "none";
+  if (summary) summary.style.display = "block";
+  container.style.display = "block";
 
-  cartItemsEl.innerHTML = cartItems
+  container.innerHTML = items
     .map(
       (item) => `
-        <div class="cart-item">
-            <div class="cart-item-info">
-                <h4>${item.title}</h4>
-                <p class="cart-item-price">${item.price} ₽</p>
-            </div>
-            <div class="cart-item-controls">
-                <button class="btn-qty" data-id="${item.id}" data-action="dec">−</button>
-                <span class="cart-item-qty">${item.quantity}</span>
-                <button class="btn-qty" data-id="${item.id}" data-action="inc">+</button>
-                <button class="btn-remove" data-id="${item.id}">✕</button>
-            </div>
-        </div>
-    `,
+    <div class="cart-item" data-id="${item.id}">
+      <div class="cart-item-info">
+        <h4>${item.title}</h4>
+        <p class="cart-item-price">${item.price} ₽</p>
+      </div>
+      <div class="cart-item-controls">
+        <button class="btn-qty" data-action="dec">−</button>
+        <span class="cart-item-qty">${item.quantity}</span>
+        <button class="btn-qty" data-action="inc">+</button>
+        <button class="btn-remove" aria-label="Удалить">✕</button>
+      </div>
+    </div>
+  `,
     )
     .join("");
 
-  totalAmountEl.textContent = getCartTotal() + " ₽";
+  if (totalEl) totalEl.textContent = `${getCartTotal()} ₽`;
   updateCartCount();
 }
 
-// Делегирование событий для кнопок корзины
-document.getElementById("cart-items")?.addEventListener("click", (e) => {
+document.addEventListener("click", (e) => {
   const btn = e.target.closest("button");
   if (!btn) return;
 
-  const id = parseInt(btn.dataset.id);
+  const itemEl = btn.closest(".cart-item");
+  if (!itemEl) return;
+
+  const id = itemEl.dataset.id;
   const action = btn.dataset.action;
-  const cart = getCartItems();
-  const item = cart.find((i) => i.id === id);
 
   if (btn.classList.contains("btn-remove")) {
     removeFromCart(id);
-  } else if (action === "inc" && item) {
-    updateQuantity(id, item.quantity + 1);
-  } else if (action === "dec" && item) {
-    updateQuantity(id, item.quantity - 1);
+  } else if (action === "inc") {
+    const currentQty = parseInt(
+      itemEl.querySelector(".cart-item-qty").textContent,
+      10,
+    );
+    updateQuantity(id, currentQty + 1);
+  } else if (action === "dec") {
+    const currentQty = parseInt(
+      itemEl.querySelector(".cart-item-qty").textContent,
+      10,
+    );
+    updateQuantity(id, currentQty - 1);
   }
 
   renderCart();
