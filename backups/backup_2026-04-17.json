@@ -1,0 +1,90 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "created_at": "2026-04-13T14:03:11.650202+00:00",
+      "title": "Шампунь Yumi Care",
+      "price": 1500,
+      "category": "hair_care",
+      "image_url": "img/meals/meal-1.jpg",
+      "description": "Увлажняющий шампунь для ежедневного ухода",
+      "in_stock": true
+    },
+    {
+      "id": 2,
+      "created_at": "2026-04-13T14:03:11.650202+00:00",
+      "title": "Крем для укладки",
+      "price": 890,
+      "category": "styling",
+      "image_url": "img/meals/meal-2.jpg",
+      "description": "Средство для укладки, средняя фиксация",
+      "in_stock": true
+    },
+    {
+      "id": 3,
+      "created_at": "2026-04-13T14:03:11.650202+00:00",
+      "title": "Подарочный сертификат 3000",
+      "price": 3000,
+      "category": "certificates",
+      "image_url": "img/meals/meal-3.jpg",
+      "description": "Сертификат на услуги салона номиналом 3000 ₽",
+      "in_stock": true
+    }
+  ],
+  "orders": [
+    {
+      "id": 13,
+      "created_at": "2026-04-14T09:42:26.540675+00:00",
+      "client_name": "Тест Тестович Тестов",
+      "client_phone": "+00000000000",
+      "total_amount": 6890,
+      "status": "new"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "e2cf1938-8fe6-4d41-a4fc-316092c8cf26",
+      "client_name": "Тест Тестович Тестов",
+      "client_phone": "+00000000000",
+      "service_type": "haircut",
+      "preferred_date": "2026-04-17",
+      "preferred_time": "16:53:00",
+      "comment": "Буду очень спешить",
+      "status": "new",
+      "created_at": "2026-04-17T09:53:46.898836+00:00"
+    },
+    {
+      "id": "fb65dc2b-5e0d-4ffe-b0f8-fd6f350e7bfe",
+      "client_name": "Тест Тестович Тестов",
+      "client_phone": "+00000000000",
+      "service_type": "brows",
+      "preferred_date": "2026-04-21",
+      "preferred_time": "13:50:00",
+      "comment": "Могу опоздать",
+      "status": "new",
+      "created_at": "2026-04-17T09:57:07.19491+00:00"
+    },
+    {
+      "id": "26d2e0e0-b841-431c-a719-8f46121cc581",
+      "client_name": "Тест Тестович Тестов",
+      "client_phone": "+00000000000",
+      "service_type": "manicure",
+      "preferred_date": "2026-04-25",
+      "preferred_time": "20:10:00",
+      "comment": "Комментарий",
+      "status": "new",
+      "created_at": "2026-04-17T10:02:34.405518+00:00"
+    },
+    {
+      "id": "aabeb9b7-d128-43b6-8315-68f23b459164",
+      "client_name": "Тест Тестович Тестов",
+      "client_phone": "+00000000000",
+      "service_type": "pedicure",
+      "preferred_date": "2026-04-17",
+      "preferred_time": "19:00:00",
+      "comment": "Коммент",
+      "status": "new",
+      "created_at": "2026-04-17T10:06:04.996112+00:00"
+    }
+  ]
+}
