@@ -23,7 +23,7 @@ jobs:
           npm install @supabase/supabase-js
 
       - name: Run Backup Script
-        run: node scripts/backup.js
+        run: node js/backup.js
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
