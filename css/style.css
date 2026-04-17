@@ -1,0 +1,828 @@
+/*
+--- 01 TYPOGRAPHY SYSTEM
+--- 02 COLORS
+--- 05 SHADOWS
+--- 06 BORDER-RADIUS
+--- 07 WHITESPACE
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   GENERAL COMPONENTS
+   =================================== */
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid {
+  display: grid;
+  row-gap: 9.6rem;
+  column-gap: 6.4rem;
+}
+
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+.grid--center-v {
+  align-items: center;
+}
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* ===================================
+   TYPOGRAPHY
+   =================================== */
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: 700;
+  color: #333;
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.subheading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
+/* ===================================
+   BUTTONS & UTILS
+   =================================== */
+
+.btn,
+.btn:link,
+.btn:visited {
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.6rem 3.2rem;
+  border-radius: 9px;
+  display: inline-block;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
+}
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: #e67e22;
+  color: #fff;
+}
+.btn--full:hover,
+.btn--full:active {
+  background-color: #cf711f;
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background-color: #fff;
+  color: #555;
+}
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: #fdf2e9;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+.link:link,
+.link:visited {
+  color: #e67e22;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  display: inline-block;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+.link:hover,
+.link:active {
+  color: #cf711f;
+  border-bottom: 1px solid transparent;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.list-item {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  line-height: 1.2;
+}
+
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+.margin-bottom-md {
+  margin-bottom: 4.8rem !important;
+}
+strong {
+  font-weight: 500;
+}
+.center-text {
+  text-align: center;
+}
+
+/* ===================================
+   HEADER & NAV
+   =================================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fdf2e9;
+  height: 9.6rem;
+  padding: 0 4.8rem;
+  position: relative;
+}
+
+/* Стили текстового логотипа YUMI */
+.header a,
+.footer-logo {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #e67e22;
+  text-decoration: none;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.footer-logo {
+  font-size: 2.4rem;
+  color: #333;
+  margin-bottom: 3.2rem;
+}
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+}
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #cf711f;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: #fff;
+  background-color: #e67e22;
+}
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+  background-color: #cf711f;
+}
+
+/* MOBILE NAV */
+.btn-mob-nav {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none; /* Скрыта на десктопе */
+}
+.icon-mob-nav {
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #333;
+}
+.icon-mob-nav[name="close-outline"] {
+  display: none;
+}
+
+/* STICKY NAV */
+.sticky .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  background-color: rgba(255, 255, 255, 0.97);
+  height: 8rem;
+  padding: 0;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.3);
+}
+.sticky .section-hero {
+  margin-top: 9.6rem;
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
+
+.section-hero {
+  background-color: #fdf2e9;
+  padding: 4.8rem 0 9.6rem 0;
+}
+
+.hero {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9.6rem;
+  align-items: center;
+}
+
+.hero-description {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 4.8rem;
+}
+
+.hero-img {
+  width: 100%;
+  border-radius: 11px;
+}
+
+.prize-meals {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 8rem;
+}
+.prize-imgs {
+  display: flex;
+}
+.prize-imgs img {
+  height: 12rem;
+  margin-right: -1.6rem;
+  border: 3px solid #fdf2e9;
+}
+.prize-imgs img:last-child {
+  margin: 0;
+}
+.prize-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.prize-text span {
+  color: #cf711f;
+  font-weight: 700;
+}
+
+/* ===================================
+   TESTIMONIALS & GALLERY
+   =================================== */
+
+.section-testimonials {
+  background-color: #fdf2e9;
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  align-items: center;
+}
+
+.testimonials-container {
+  padding: 9.6rem;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 4.8rem;
+  column-gap: 8rem;
+}
+
+.testimonial-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 1.6rem;
+}
+.testimonial-name {
+  font-size: 1.6rem;
+  color: #6f6f6f;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  padding: 1.6rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1 / 1; /* Фикс высоты квадрата */
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all 0.4s;
+}
+.gallery-item img:hover {
+  transform: scale(1.1);
+}
+
+/* ===================================
+   PRICING / SERVICES
+   =================================== */
+
+.section-pricing {
+  padding: 9.6rem 0;
+}
+
+/* Центрирование карточек в сетке */
+.section-pricing .grid--3-cols {
+  justify-items: center;
+}
+
+/* Карточка услуги (объединенные стили) */
+.pricing-plan {
+  width: 100%;
+  max-width: 32rem;
+  min-height: 34rem;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 3.2rem;
+  border: 2px solid #fdf2e9;
+  border-radius: 11px;
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 2.4rem;
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #e67e22;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.pricing-plan .list {
+  flex-grow: 1;
+  margin-bottom: 2rem;
+}
+
+.pricing-plan .list-item {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 1rem;
+  display: block; /* Убираем flex */
+  text-align: left;
+}
+
+/* Красивые оранжевые точки */
+.pricing-plan .list-item::before {
+  content: "•";
+  color: #e67e22;
+  font-size: 2rem;
+  line-height: 1;
+  margin-right: 0.8rem;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+/* ===================================
+   CTA SECTION
+   =================================== */
+
+.section-cta {
+  padding: 4.8rem 0 12.8rem 0;
+}
+
+.cta {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background-color: #e67e22;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+  border-radius: 11px;
+  background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+  overflow: hidden;
+}
+
+.cta-text-box {
+  color: #45260a;
+  padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+}
+.cta .heading-secondary {
+  color: #45260a;
+  margin-bottom: 3.2rem;
+}
+.cta-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 4.8rem;
+}
+.cta-img-box {
+  background-image:
+    linear-gradient(
+      to right bottom,
+      rgba(235, 151, 78, 0.35),
+      rgba(230, 125, 34, 0.35)
+    ),
+    url(../img/card.webp);
+  background-size: cover;
+  background-position: center;
+}
+.cta-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 3.2rem;
+  column-gap: 2.4rem;
+}
+.cta-form label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+.cta-form input,
+.cta-form select {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  border: none;
+  color: inherit;
+  background-color: #fdf2e9;
+  border-radius: 9px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.cta-form input::placeholder {
+  color: #aaa;
+}
+.cta *:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+.footer {
+  padding: 12.8rem 0;
+  border-top: 1px solid #eee;
+}
+.grid-footer {
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+.logo-col {
+  display: flex;
+  flex-direction: column;
+}
+.footer-heading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+.contacts {
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+.social-links {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+}
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+.copyright {
+  font-size: 1.4rem;
+  color: #767676;
+  line-height: 1.6;
+  margin-top: auto;
+}
+.address {
+  margin-bottom: 2.4rem;
+}
+.footer-link:link,
+.footer-link:visited {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: #767676;
+  transition: all 0.3s;
+}
+.footer-link:hover,
+.footer-link:active {
+  color: #555;
+}
+
+/* ===================================
+   YUMI STORE - PRODUCTS
+   =================================== */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 4.8rem;
+  margin-top: 4.8rem;
+}
+
+.product-card {
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  border-radius: 11px;
+  overflow: hidden;
+  transition: all 0.4s;
+  background: white;
+}
+.product-card:hover {
+  transform: translateY(-1.2rem);
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+}
+
+.product-image {
+  width: 100%;
+  height: 24rem;
+  object-fit: cover;
+  display: block;
+}
+.product-content {
+  padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+}
+.product-title {
+  font-size: 2.4rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+}
+.product-category {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 0.75px;
+  margin-bottom: 1.2rem;
+}
+.product-price {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #e67e22;
+  margin-bottom: 2rem;
+}
+.product-desc {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #6f6f6f;
+  margin-bottom: 3.2rem;
+}
+
+.btn-add-to-cart {
+  width: 100%;
+  padding: 1.6rem 3.2rem;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-add-to-cart:hover {
+  background-color: #cf711f;
+  transform: translateY(-2px);
+}
+
+/* PRODUCTS SECTION HEADERS */
+.section-products .section-title {
+  text-align: center;
+  font-size: 4.4rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.6rem;
+  letter-spacing: -0.5px;
+}
+.section-products .section-desc {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #6f6f6f;
+  margin-bottom: 6.4rem;
+  line-height: 1.6;
+}
+.section-products {
+  padding: 9.6rem 0;
+  margin-bottom: 4.8rem;
+}
+.products-grid {
+  margin-bottom: 0;
+}
+.section-products + section {
+  margin-top: 4.8rem;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   =================================== */
+
+/* Tablet & Mobile */
+@media (max-width: 768px) {
+  /* Навигация */
+  .btn-mob-nav {
+    display: block;
+  }
+  .main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nav-open .main-nav {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-open .icon-mob-nav[name="menu-outline"] {
+    display: none;
+  }
+  .nav-open .icon-mob-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+  .main-nav-link {
+    font-size: 3rem;
+  }
+
+  /* Hero */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 3.2rem;
+    text-align: center;
+    gap: 4.8rem;
+  }
+  .hero-img {
+    width: 60%;
+    justify-self: center;
+  }
+  .prize-meals {
+    justify-content: center;
+  }
+
+  /* Testimonials */
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-container {
+    padding: 4.8rem 3.2rem;
+  }
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  /* Gallery */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Pricing/Services */
+  .section-pricing .grid--3-cols {
+    grid-template-columns: 1fr;
+  }
+
+  /* Products */
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-content {
+    padding: 2.4rem 3.2rem 3.2rem 3.2rem;
+  }
+
+  /* CTA */
+  .cta {
+    grid-template-columns: 1fr;
+  }
+  .cta-text-box {
+    padding: 4.8rem 3.2rem 3.2rem 3.2rem;
+  }
+  .cta-img-box {
+    height: 30rem;
+  }
+
+  /* Footer */
+  .grid-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.2rem;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+  .hero-img {
+    width: 80%;
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .grid-footer {
+    grid-template-columns: 1fr;
+  }
+}

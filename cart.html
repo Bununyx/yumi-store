@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Корзина — Yumi Store</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+    <link rel="stylesheet" href="css/shop.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-container">
+        <a href="index.html">YUMI</a>
+        <nav class="main-nav">
+          <ul class="main-nav-list">
+            <li><a class="main-nav-link" href="index.html">Каталог</a></li>
+            <li>
+              <a class="main-nav-link" href="cart.html"
+                >🛒 <span id="cart-count">0</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="cart-page">
+      <div class="container">
+        <h2 class="heading-secondary">Ваша корзина</h2>
+
+        <div class="cart-layout grid grid--2-cols">
+          <div class="cart-items-wrapper">
+            <div id="cart-items" class="cart-items"></div>
+            <div id="cart-empty" class="cart-empty">
+              <p>Корзина пуста 😔</p>
+              <a href="index.html" class="btn btn--full">Продолжить покупки</a>
+            </div>
+          </div>
+
+          <div id="cart-summary" class="cart-summary">
+            <h3 class="heading-tertiary">Итого к оплате</h3>
+            <p class="cart-total-price" id="cart-total-amount">0 ₽</p>
+            <a href="checkout.html" class="btn btn--full btn--large"
+              >Оформить заказ →</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/cart.js"></script>
+    <script type="module" src="js/cart-page.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

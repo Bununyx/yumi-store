@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оформление заказа — Yumi Store</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+    <link rel="stylesheet" href="css/shop.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">YUMI</a>
+      </div>
+    </header>
+
+    <main class="checkout-page">
+      <div class="container">
+        <div class="checkout-container">
+          <h2 class="heading-secondary">Оформление заказа</h2>
+
+          <!-- Скрыт по умолчанию -->
+          <div
+            id="checkout-success"
+            style="display: none"
+            class="checkout-success"
+          >
+            <h3 class="heading-primary">🎉 Заказ оформлен!</h3>
+            <p>
+              Спасибо! Менеджер свяжется с вами в ближайшее время для
+              подтверждения.
+            </p>
+            <a href="index.html" class="btn btn--full">Вернуться в каталог</a>
+          </div>
+
+          <form id="checkout-form" class="checkout-form">
+            <div class="form-group">
+              <label for="client-name">Ваше имя</label>
+              <input
+                type="text"
+                id="client-name"
+                placeholder="Иван Иванов"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="client-phone">Телефон</label>
+              <input
+                type="tel"
+                id="client-phone"
+                placeholder="+7 (999) 000-00-00"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="comment">Комментарий</label>
+              <textarea
+                id="comment"
+                rows="3"
+                placeholder="Код домофона, этаж, пожелания..."
+              ></textarea>
+            </div>
+
+            <div class="order-summary">
+              <h4>Состав заказа</h4>
+              <div id="checkout-items" class="checkout-items"></div>
+              <div class="checkout-total">
+                <span>Итого:</span>
+                <strong id="checkout-total">0 ₽</strong>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn--full btn-submit">
+              Подтвердить заказ
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/cart.js"></script>
+    <script type="module" src="js/checkout-page.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

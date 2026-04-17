@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Салон красоты Yumi: профессиональные услуги маникюра, стрижки, окрашивания и фирменная косметика."
+    />
+
+    <link rel="icon" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+    <link rel="stylesheet" href="css/shop.css" />
+
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/cart.js"></script>
+    <script type="module" src="js/app.js"></script>
+
+    <script defer src="js/script.js"></script>
+
+    <!--  Scroll in old versions-Safari -->
+    <script
+      defer
+      src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+    ></script>
+
+    <title>Yumi &mdash; Салон красоты и магазин косметики</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#"> YUMI </a>
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li><a class="main-nav-link" href="#products-section">Каталог</a></li>
+          <li><a class="main-nav-link" href="#testi">Отзывы</a></li>
+          <li><a class="main-nav-link" href="#price">Услуги салона</a></li>
+          <li>
+            <a class="main-nav-link" href="cart.html"
+              >🛒 <span id="cart-count">0</span></a
+            >
+          </li>
+          <li><a class="main-nav-link nav-cta" href="#cta">Записаться</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-mob-nav">
+        <ion-icon class="icon-mob-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mob-nav" name="close-outline"></ion-icon>
+      </button>
+    </header>
+
+    <main>
+      <section class="section-hero">
+        <div class="hero">
+          <div class="hero-text-box">
+            <h1 class="heading-primary">
+              Всё для твоей красоты: услуги салона и домашний уход
+            </h1>
+            <p class="hero-description">
+              Запишись на процедуру к мастеру или выбери тщательно отобранную
+              профессиональную косметику для ежедневного ухода. Всё в одном
+              месте.
+            </p>
+            <a href="#cta" class="btn btn--full margin-right-sm"
+              >Связаться с нами</a
+            >
+            <div class="prize-meals">
+              <div class="prize-imgs">
+                <img src="img/yandex.PNG" alt="Yandex-good place" />
+              </div>
+              <p class="prize-text">
+                Отмечены Яндексом как <span>Хорошее место 2026</span>!
+              </p>
+            </div>
+          </div>
+          <div class="hero-img-box">
+            <picture>
+              <source srcset="img/hero.webp" type="image/webp" />
+              <source srcset="img/hero-min.png" type="image/png" />
+
+              <img src="img/hero-min.png" class="hero-img" alt="Indoors" />
+            </picture>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-products" id="products-section">
+        <div class="container">
+          <h2 class="section-title">Наши товары</h2>
+          <p class="section-desc">
+            Профессиональная косметика и уход от салона Yumi
+          </p>
+
+          <!-- СЮДА БУДУТ ЗАГРУЖЕНЫ ТОВАРЫ ИЗ SUPABASE -->
+          <div id="products-grid" class="products-grid">
+            <p>Загрузка товаров...</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-testimonials" id="testi">
+        <div class="testimonials-container">
+          <span class="subheading">Отзывы</span>
+          <h2 class="heading-secondary">К нам возвращаются снова и снова</h2>
+
+          <div class="testimonials">
+            <figure class="testimonial">
+              <blockquote class="testimonial-text">
+                Мне очень нравиться мастер, качественно выполняет все услуги,
+                соблюдает все гигиенические требования, доброжелательна,
+                внимательна к клиентам. Очень приятно к ней приходить, в
+                парикмахерской уютно, чисто
+              </blockquote>
+              <p class="testimonial-name">&mdash; Нина</p>
+            </figure>
+
+            <figure class="testimonial">
+              <blockquote class="testimonial-text">
+                Очень понравилось! Стрижку сделали такую, как я и хотела.
+                Быстро, аккуратно. Девушка очень вежливая и приятная.
+                Обязательно приду еще
+              </blockquote>
+              <p class="testimonial-name">&mdash; Любовь</p>
+            </figure>
+
+            <figure class="testimonial">
+              <blockquote class="testimonial-text">
+                Прекрасный мастер! Выше всех похвал! Учла все пожелания, и
+                сотворила красоту ! От все души желаю успехов!
+              </blockquote>
+              <p class="testimonial-name">&mdash; Александра</p>
+            </figure>
+
+            <figure class="testimonial">
+              <blockquote class="testimonial-text">
+                Очень качественная работа: маникюр, покраска. Из брюнетки
+                сделала блондинку без вреда для волос! Настоящий профессионал
+                своего дела! Всем рекомендую. Отличный уютный салон!
+              </blockquote>
+              <p class="testimonial-name">&mdash; Ирина</p>
+            </figure>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <figure class="gallery-item">
+            <img src="img/gallery/1.webp" alt="Маникюр" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/2.webp" alt="Маникюр" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/3.webp" alt="Маникюр" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/4.webp" alt="haircut" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/5.webp" alt="haircut" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/6.webp" alt="haircut" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/7.webp" alt="Indoors" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/8.webp" alt="Indoors" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/9.webp" alt="Indoors" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/10.webp" alt="Маникюр" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/11.webp" alt="Маникюр" />
+          </figure>
+
+          <figure class="gallery-item">
+            <img src="img/gallery/12.webp" alt="Маникюр" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section-pricing" id="price">
+        <div class="container">
+          <span class="subheading">Услуги</span>
+          <h2 class="heading-secondary">Широкий спектр бьюти-процедур</h2>
+        </div>
+
+        <div class="container grid grid--3-cols margin-bottom-md">
+          <div class="pricing-plan pricing-plan--starter">
+            <header class="plan-header">
+              <p class="plan-name">Окрашивание</p>
+            </header>
+            <ul class="list">
+              <li class="list-item">
+                <span>Окрашивание корни/короткие волосы</span>
+              </li>
+              <li class="list-item">
+                <span>Окрашивание волосы до плеч</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pricing-plan pricing-plan--starter">
+            <header class="plan-header">
+              <p class="plan-name">Стрижки</p>
+            </header>
+            <ul class="list">
+              <li class="list-item">
+                <span>Короткая</span>
+              </li>
+              <li class="list-item">
+                <span>Кончики до плеч</span>
+              </li>
+              <li class="list-item">
+                <span>Стрижка челки</span>
+              </li>
+              <li class="list-item">
+                <span>Кончики ниже плеч</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pricing-plan pricing-plan--starter">
+            <header class="plan-header">
+              <p class="plan-name">Педикюр</p>
+            </header>
+            <ul class="list">
+              <li class="list-item">
+                <span>Гигиеническая обработка пальцев ног</span>
+              </li>
+              <li class="list-item">
+                <span>Гигиеническая обработка всей стопы</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pricing-plan pricing-plan--starter">
+            <header class="plan-header">
+              <p class="plan-name">Маникюр</p>
+            </header>
+            <ul class="list">
+              <li class="list-item">
+                <span>Гигиенический</span>
+              </li>
+              <li class="list-item">
+                <span>Наращивание</span>
+              </li>
+              <li class="list-item">
+                <span>Снятие гель-лак/гель</span>
+              </li>
+              <li class="list-item">
+                <span>Маникюр с покрытием</span>
+              </li>
+              <li class="list-item">
+                <span>Маникюр с дизайном и уреплением</span>
+              </li>
+            </ul>
+          </div>
+          <div class="pricing-plan pricing-plan--starter">
+            <header class="plan-header">
+              <p class="plan-name">Брови</p>
+            </header>
+            <ul class="list">
+              <li class="list-item">
+                <span>Окрашивание</span>
+              </li>
+              <li class="list-item">
+                <span>Коррекция</span>
+              </li>
+              <li class="list-item">
+                <span>Эпиляция</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- All forms are optimized to work with Netlify -->
+      <section class="section-cta" id="cta">
+        <div class="container">
+          <div class="cta">
+            <div class="cta-text-box">
+              <h2 class="heading-secondary">Запишись к нам!</h2>
+              <p class="cta-text">
+                Приходи на бьюти-процедуры и заказывай профессиональную уходовую
+                косметику.
+              </p>
+              <form class="cta-form" name="sign-up" netlify>
+                <div>
+                  <label for="full name">Имя</label>
+                  <input
+                    id="full name"
+                    type="text"
+                    placeholder="Your name"
+                    name="full-name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="email">Электронная почта</label>
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="example@example.com"
+                    name="email"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="select-where">Откуда вы о нас узнали?</label>
+                  <select id="select-where" name="select-where" required>
+                    <option value="">Выберите:</option>
+                    <option value="friends">Друзья</option>
+                    <option value="youtube">Соцсети</option>
+                    <option value="podcast">Увидел вывеску</option>
+                    <option value="smad">Поисковые системы</option>
+                    <option value="others">Другое</option>
+                  </select>
+                </div>
+
+                <button class="btn btn--form">Связаться</button>
+              </form>
+            </div>
+            <div
+              class="cta-img-box"
+              role="img"
+              aria-label="Visiting-card"
+            ></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container grid grid-footer">
+        <div class="logo-col">
+          <a href="#" class="footer-logo"> YUMI </a>
+
+          <ul class="social-links">
+            <li>
+              <a class="footer-link" href="#"
+                ><ion-icon class="social-icon" name="logo-instagram"></ion-icon
+              ></a>
+            </li>
+          </ul>
+
+          <p class="copyright">
+            Copyright &copy; <span class="year">2023</span> <br />ИП Дмитриева
+            Ольга
+            <br />
+            All rights reserved.
+          </p>
+        </div>
+        <div class="adress-col">
+          <p class="footer-heading">Адрес</p>
+          <address class="contacts">
+            <p class="address">г. Калининград, <br />ул. Менделеева, 2</p>
+            <p>
+              <a class="footer-link" href="+7 (***) ***-**-**"
+                >+7 (***) ***-**-**</a
+              >
+              <br />
+            </p>
+          </address>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
