@@ -125,16 +125,18 @@ body {
   cursor: pointer;
 }
 
-.btn--form {
-  background-color: #45260a;
-  color: #fdf2e9;
+.btn--form:link,
+.btn--form:visited {
   align-self: end;
   padding: 1.2rem;
+  transition: all 0.3s;
 }
 
-.btn--form:hover {
-  background-color: #fff;
-  color: #555;
+.btn--form:hover,
+.btn--form:active {
+  background-color: #cf711f;
+  color: #fff;
+  transform: translateY(-2px);
 }
 
 .btn--full:link,
@@ -446,6 +448,110 @@ body {
 }
 
 /* ===================================
+   SERVICES PRICING LIST (Menu Style)
+   =================================== */
+
+.services-grid {
+  /* На десктопе разбиваем на 2 колонки, как в меню ресторана */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4.8rem 6.4rem; /* Отступы между колонками и строками */
+  margin-top: 4.8rem;
+  max-width: 1100px; /* Ограничиваем ширину для читаемости */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-category {
+  /* Чтобы категории не ломались посередине при печати или скролле */
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+.category-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2.4rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #e67e22; /* Оранжевая линия под заголовком */
+  display: inline-block;
+}
+
+.service-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem; /* Отступ между услугами */
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Верхняя строка: Название + Время ------- Цена */
+.service-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.service-name-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.service-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+.service-duration {
+  font-size: 1.3rem;
+  color: #888;
+  font-weight: 400;
+}
+
+.service-price {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #e67e22;
+  white-space: nowrap; /* Цена не переносится на новую строку */
+  margin-left: auto; /* Прижимает цену к правому краю, если место позволяет */
+}
+
+/* Описание услуги (скрытый текст) */
+.service-desc {
+  font-size: 1.4rem;
+  color: #6f6f6f;
+  line-height: 1.5;
+  margin: 0;
+  margin-top: 0.4rem;
+  padding-left: 1rem; /* Небольшой отступ слева */
+  border-left: 2px solid #eee; /* Визуальный маркер описания */
+  font-style: italic;
+}
+
+/* Адаптив для планшетов и мобильных */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: 1fr; /* Одна колонка */
+    gap: 3.2rem;
+    padding: 0 1.6rem;
+  }
+
+  .category-title {
+    font-size: 2.4rem;
+  }
+}
+
+/* ===================================
    09. TESTIMONIALS & GALLERY
    =================================== */
 .section-testimonials {
@@ -548,6 +654,18 @@ body {
   font-size: 1.6rem;
   font-weight: 500;
   margin-bottom: 1.2rem;
+}
+
+.cta-img-box {
+  background-image:
+    linear-gradient(
+      to right bottom,
+      rgba(235, 151, 78, 0.35),
+      rgba(230, 125, 34, 0.35)
+    ),
+    url(../img/card.webp);
+  background-size: cover;
+  background-position: center;
 }
 
 .cta-form input,
